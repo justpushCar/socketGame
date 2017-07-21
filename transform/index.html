@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>transform</title>
+	<link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+  <div class="box box1"></div>
+  <div class="tip tip1"></div>
+  <div class="tip tip2"></div>
+  <div class="tip tip3"></div>
+  <div class="tip tip4"></div>
+  <div class="tip tip5"></div>
+  <div class="tip tip6"></div>
+  <div class="tip tip7"></div>
+  <div class="tip tip8"></div>
+  <div class="control">
+  	旋转：<span class="label">0'</span>
+  	<input type="range" value="0" min="0" max="360" step="1" id="range">
+  </div>
+  <script type="text/javascript" src="js/transform.js"></script>
+	<script type="text/javascript">
+		var box = document.querySelector(".box"),
+			tip1 = document.querySelector(".tip1"),
+			tip2 = document.querySelector(".tip2"),
+			tip3 = document.querySelector(".tip3"),
+			tip4 = document.querySelector(".tip4"),
+			tip5 = document.querySelector(".tip5"),
+			tip6 = document.querySelector(".tip6"),
+			tip7 = document.querySelector(".tip7"),
+			tip8 = document.querySelector(".tip8"),
+			range = document.querySelector("#range"),
+			label = document.querySelector(".label");
+
+		var options = {
+			x: box.offsetLeft,
+			y: box.offsetTop,
+			width: box.offsetWidth,
+			height: box.offsetHeight
+		};
+
+		rotate(0);
+
+		function rotate(angle) {
+			box.style.cssText = `transform: rotate(${angle}deg)`;
+			var transformed = transform(options, angle);
+			tip1.style.left = transformed.point.topLeft.x + 'px';
+			tip1.style.top = transformed.point.topLeft.y + 'px';
+			tip1.innerHTML = 'tl';
+			tip2.style.left = transformed.point.topRight.x + 'px';
+			tip2.style.top = transformed.point.topRight.y + 'px';
+			tip2.innerHTML = 'tr';
+			tip3.style.left = transformed.point.bottomLeft.x + 'px';
+			tip3.style.top = transformed.point.bottomLeft.y + 'px';
+			tip3.innerHTML = 'bl';
+			tip4.style.left = transformed.point.bottomRight.x + 'px';
+			tip4.style.top = transformed.point.bottomRight.y + 'px';
+			tip4.innerHTML = 'br';
+			tip5.style.left = transformed.point.top.x + 'px';
+			tip5.style.top = transformed.point.top.y + 'px';
+			tip5.innerHTML = 't';
+			tip6.style.left = transformed.point.right.x + 'px';
+			tip6.style.top = transformed.point.right.y + 'px';
+			tip6.innerHTML = 'r';
+			tip7.style.left = transformed.point.bottom.x + 'px';
+			tip7.style.top = transformed.point.bottom.y + 'px';
+			tip7.innerHTML = 'b';
+			tip8.style.left = transformed.point.left.x + 'px';
+			tip8.style.top = transformed.point.left.y + 'px';
+			tip8.innerHTML = 'l';
+		}
+
+		range.addEventListener("change", function() {
+			label.innerHTML = `${range.value}'`;
+			rotate(range.value);
+		});
+	</script>
+</body>
+</html>

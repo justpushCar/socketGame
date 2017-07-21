@@ -1,0 +1,31 @@
+body{
+  padding:0;
+  margin:0;
+}
+.box{
+  width: 500px;
+  height: 300px;
+  border: 1px solid #f00;
+  position: absolute;
+  top: 150px;
+  left: 200px;
+  box-sizing: border-box;
+  transform-origin: 50% 50%;
+}
+.tip{
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  color: #fff;
+  margin-top: -15px;
+  margin-left: -15px;
+  background: #00f;
+  position: absolute;
+  border-radius: 50%;
+  font-family: 'Microsoft Yahei';
+}
+.control{
+  margin-top:  30px;
+  margin-left: 50px;
+}
